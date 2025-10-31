@@ -6,7 +6,7 @@ import random
 vocab = []
 token_to_id = []
 id_to_token = []
-sample_text = ""
+text = ""
 
 # Load Tokens
 with open("tokens.txt", "r", encoding="utf-8") as f:
@@ -16,4 +16,14 @@ with open("tokens.txt", "r", encoding="utf-8") as f:
 
 # Load Conversation
 with open("tinychat.txt", "r", encoding="utf-8") as f:
-    sample_text = f.read()
+    text = f.read()
+
+# Helper Functions
+def tokenize(text):
+    result = []
+    for word in text.split():
+        result.append(token_to_id.get(word, 0))
+    return result
+
+data = tokenize(text)
+print(data)
